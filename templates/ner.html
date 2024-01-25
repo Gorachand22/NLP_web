@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Named Entity Recognition (NER)</title>
+    <style>
+        body {
+            background-color: #473f3f;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #421818;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            resize: none;
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ec7e7e;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #090000;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2074a0;
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <form action="/perform_ner" method="post">
+        <label for="ner_text">Type your text here:</label><br>
+        <textarea id="ner_text" name="ner_text" required></textarea><br><br>
+        <input type="submit" value="Perform NER">
+    </form>
+
+    {% if response %}
+        <div style="text-align: center;">
+            <h2>Named Entities:</h2>
+            {% for entity in response['entities'] %}
+                <p>{{ entity['name'] }} ==> {{ entity['category'] }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <form action="/profile">
+        <input type="submit" value="Back To Playground">
+    </form>
+</body>
+</html>

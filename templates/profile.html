@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP Web</title>
+    <style>
+        body {
+            background-color: #d89d9d;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #5b0808;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000406;
+            font-weight: bold; /* Make the font bold */
+            font-size: 18px; /* Increase the font size */
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #196f9c;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Welcome to Playground</h1>
+        <p>What would you like to do?</p>
+        <ul>
+            <li><a href="/ner">Named Entity Recognition (NER)</a></li><br><br>
+            <li><a href="/SA">Sentiment Analysis</a></li><br><br>
+            <li><a href="/ER">Emotion Recognition</a></li><br><br>
+            <li><a href="/Sarcasm">Check Sarcasm</a></li><br><br>
+            <li><a href="/Abusive">Check Abuse</a></li><br>
+        </ul>
+    </div>
+
+    <script>
+        // Add interactivity to highlight the selected navigation item
+        document.addEventListener('DOMContentLoaded', function () {
+            var currentPath = window.location.pathname;
+            var links = document.querySelectorAll('a');
+
+            links.forEach(function (link) {
+                if (link.getAttribute('href') === currentPath) {
+                    link.style.color = '#2074a0'; // Highlight color
+                }
+            });
+        });
+    </script>
+</body>
+</html>
